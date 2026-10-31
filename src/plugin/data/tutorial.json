@@ -1,0 +1,20 @@
+[
+  {
+    "id": "s1",
+    "start_ms": 500,
+    "end_ms": 1200,
+    "text": "Hello!"
+  },
+  {
+    "id": "s2",
+    "start_ms": 1000,
+    "end_ms": 3000,
+    "text": "Welcome back."
+  },
+  {
+    "id": "s3",
+    "start_ms": 9000,
+    "end_ms": 12000,
+    "text": "See you tomorrow."
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "a",
+    "start_ms": 0,
+    "end_ms": 900,
+    "text": "Open the door."
+  },
+  {
+    "id": "b",
+    "start_ms": 400,
+    "end_ms": 800,
+    "text": "Too brief."
+  },
+  {
+    "id": "c",
+    "start_ms": 700,
+    "end_ms": 1800,
+    "text": "We made it."
+  },
+  {
+    "id": "d",
+    "start_ms": 1800,
+    "end_ms": 1900,
+    "text": "Wait."
+  },
+  {
+    "id": "e",
+    "start_ms": 2100,
+    "end_ms": 3100,
+    "text": "Keep going."
+  },
+  {
+    "id": "f",
+    "start_ms": 3000,
+    "end_ms": 4500,
+    "text": "The end."
+  }
+]

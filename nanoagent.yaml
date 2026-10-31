@@ -1,0 +1,36 @@
+_ > nanoagent.plugin.v0001.ManifestConfig:
+id: ce52-subtitle-timeline-repairer
+name: Subtitle Timeline Repairer
+version: 0.1.0
+status: ready
+spec: nanoagent.plugin/v0001
+
+runtime > nanoagent.plugin.v0001.RuntimeConfig:
+  type: mcp_stdio
+  command: [uv, run, --frozen, python, -m, plugin]
+
+permissions > nanoagent.plugin.v0001.PermissionsConfig:
+  network > nanoagent.plugin.v0001.NetworkConfig:
+    hosts: []
+  filesystem > nanoagent.plugin.v0001.FilesystemConfig:
+    write: [workspace]
+
+tools > dict[contract.Tool, nanoagent.plugin.v0001.ToolConfig]:
+  pin_case:
+    description: Pin original subtitle data and prior run IDs privately before the agent starts
+  read_cues:
+    description: Read original cues and calculate proposed timings for this run; the agent chooses which candidates survive
+  save_repair:
+    description: Save the agent's retained candidates and dropped IDs exactly as supplied; does not correct mistakes
+
+tasks > dict[contract.Task, nanoagent.plugin.v0001.TaskConfig]:
+  repair-timeline:
+    description: Repair a subtitle fixture under integer shift, clipping, overlap and minimum-gap rules
+    runner: agent
+    tools: [read_cues, save_repair]
+    reference: pin_case
+    instructions: |-
+      Call read_cues once with the task input copied exactly. It returns a run token, originals and candidate timings.
+      Process candidates in the given order. Retain a candidate exactly when start_ms < end_ms. Copy every retained candidate's id, start_ms, end_ms and text unchanged into subtitles. Put every other candidate's id in dropped_ids. Preserve order in both lists and use [] for empty lists.
+      The tool computes all times: add offset_ms, clip endpoints to [0, duration_ms], then delay a start until the previous retained cue's end plus gap_ms when necessary. Never move an end forward. A dropped cue does not update the previous retained end. The first retained cue has no leading gap requirement. Original input order is authoritative; do not sort.
+      Call save_repair with run and task exactly as returned, subtitles and dropped_ids. It saves your answer without fixing it. Then call submit with the complete save_repair output unchanged. Use short reasoning and only these two plugin calls before submit.

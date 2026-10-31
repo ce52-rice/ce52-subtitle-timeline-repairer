@@ -1,0 +1,11 @@
+_ > nanoagent.plugin.v0001.ProductConfig:
+tagline: "Repair subtitle timing with an exact, inspectable result"
+summary: "Shift synthetic subtitle cues, clip them to a video window, and resolve overlaps with a minimum gap. Tools calculate timings; the agent selects valid cues and saves its decision. Independent code checks the saved artifact against privately pinned original data. No video or weather service is needed."
+highlights:
+  - "Four small synthetic fixtures, including overlapping and empty timelines"
+  - "Integer milliseconds with explicit clipping, gap and drop rules"
+  - "Checks both submitted records and the actual saved JSON file"
+steps:
+  - "Choose a fixture, offset, video duration and minimum gap"
+  - "The agent reads candidates and saves the retained cues and dropped IDs"
+  - "Inspect the result and deterministic verifier verdict"

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "first",
+    "start_ms": -2000,
+    "end_ms": -100,
+    "text": "Before."
+  },
+  {
+    "id": "touch",
+    "start_ms": -100,
+    "end_ms": 0,
+    "text": "At zero."
+  },
+  {
+    "id": "cross",
+    "start_ms": -50,
+    "end_ms": 300,
+    "text": "Across zero."
+  },
+  {
+    "id": "unicode",
+    "start_ms": 300,
+    "end_ms": 900,
+    "text": "こんにちは — hello!"
+  },
+  {
+    "id": "out",
+    "start_ms": 10000,
+    "end_ms": 14000,
+    "text": "Beyond."
+  },
+  {
+    "id": "late",
+    "start_ms": 100,
+    "end_ms": 200,
+    "text": "Out of order."
+  }
+]
